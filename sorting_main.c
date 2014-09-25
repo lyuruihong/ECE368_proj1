@@ -42,8 +42,8 @@ int main (
     printf("TEST MENU\n");
     printf("1. Load array from file\n");
     printf("2. Save array to file\n");
-    printf("3. Shell Sort (Insertion) with Sequence h(k) = 2h(k-1)+1\n");
-    printf("4. Improved Bubble Sort with Sequence h(k) = 2h(k-1)+1\n");
+    printf("3. Shell Sort (Insertion)\n");
+    printf("4. Improved Bubble Sort\n");
     printf("5. Exit\n");
     printf("Enter your choice: ");
     scanf("%d",&Response);
@@ -133,11 +133,11 @@ int main (
         switch(Response)
         {
           case 3:
-            printf("Sorting by Shell Sort (Insertion) with Sequence h(k) = 2h(k-1)+1\n");
+            printf("Sorting by Shell Sort (Insertion)\n");
             Shell_Insertion_Sort (Array, Size, &N_Comp, &N_Move);
             break;
           case 4:
-            printf("Sorting by Improved Bubble Sort with Sequence XXXXX\n");
+            printf("Sorting by Improved Bubble Sort\n");
             Improved_Bubble_Sort (Array, Size, &N_Comp, &N_Move);
             break;
         }
