@@ -92,21 +92,22 @@ void Shell_Insertion_Sort (long *Array, int Size, double *NComp, double *NMove){
 	int gap;
 	int j;
 	int i; 
-	while( i_Seq1 >= 1){
-		gap = res[i_Seq1 - 1];
+	while( i_Seq1 >= 0){
+		gap = res[i_Seq1];
 		i_Seq1--;
-		for(j = gap; j < Size; j++){
+		for(j = gap; j < Size; j ++){
 			long temp = Array[j];
 			i = j;
 			(*NMove) ++;
 			//for(k = j; (k >= gap) && (Array[k - gap] > temp); k -= gap){
 			while(i >= gap && Array[i - gap] > temp){ 
-				*NComp += 1;
+				(*NComp) += 1;
 				Array[i] = Array[i - gap];
 				i -= gap;
-				Array[i] = temp;
-				(*NMove) += 2;
+				(*NMove) ++;
 			}
+			Array[i] = temp;
+			(*NMove) ++;	
 		}
 	}
 	free(res);
