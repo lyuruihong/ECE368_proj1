@@ -74,7 +74,7 @@ void Shell_Insertion_Sort (long *Array, int Size, double *NComp, double *NMove){
                 p2 += 1;}
                else if(res[p3] * 3 == res[i_Seq1 - 1]){
                 p3 += 1;}*/
-
+	       i_Seq1++;
                u2 = res[p2] * 2;
                u3 = res[p3] * 3;
                if(u2 < u3){
@@ -83,25 +83,28 @@ void Shell_Insertion_Sort (long *Array, int Size, double *NComp, double *NMove){
                else{
                p3 += 1;
                res[i_Seq1] = u3;}
-	       i_Seq1++;
+	       
 
           }
 	
 	i_Seq1--;
 	//do shell-insertion sort
 	int gap;
-	int j; 
+	int j;
+	int i; 
 	while( i_Seq1 >= 1){
 		gap = res[i_Seq1 - 1];
 		i_Seq1--;
 		for(j = gap; j < Size; j++){
 			long temp = Array[j];
-			int k;
-			(*NComp) ++;
-			for(k = j; (k >= gap) && (Array[k - gap] > temp); k -= gap){
-				*NComp += 2;
-				Array[k] = Array[k - gap];
-				Array[k - gap] = temp;
+			i = j;
+			(*NMove) ++;
+			//for(k = j; (k >= gap) && (Array[k - gap] > temp); k -= gap){
+			while(i >= gap && Array[i - gap] > temp){ 
+				*NComp += 1;
+				Array[i] = Array[i - gap];
+				i -= gap;
+				Array[i] = temp;
 				(*NMove) += 2;
 			}
 		}
@@ -131,23 +134,24 @@ void Improved_Bubble_Sort (long *Array, int Size, double *NComp, double *NMove){
 		i_Seq2++;
 		Seq2[i_Seq2] = n;
 	}
-	int length = i_Seq2;  // the largest index of Seq2
 	//using bubble sort with gaps to sort the array
-
+	//comb
 	int i = 0; // gap index in Seq2
 	int gap;  
 	int j = 0;  // index for subarray selected
-	for(i = 0; i < length; i++){
+	for(i = 0; i <= i_Seq2; i++){
 		gap = Seq2[i]; 
 		(*NComp)++;    
+		
 		for(j = 0; j < Size - gap; j++){
 			if(Array[j] > Array[j + gap]){
 				(*NComp)++;
 				swap(&Array[j],&Array[j + gap]);
 				(*NMove) += 3;
 			}
+			}
 		}
-	}
+	
 	free(Seq2);
 }
 
