@@ -69,11 +69,11 @@ void Shell_Insertion_Sort (long *Array, int Size, double *NComp, double *NMove){
 	int i_Seq1 = 0;  // index of Seq1
 	int u2 = 0;  // elements got by multiply 2
 	int u3 = 0;  // elements got by multiply 3
-	while(res[i_Seq1 - 1] < Size){
-	       /*if(res[p2] * 2 == res[i_Seq1 - 1]){
+	while(res[i_Seq1] < Size){
+	       if(res[p2] * 2 == res[i_Seq1]){
                 p2 += 1;}
-               else if(res[p3] * 3 == res[i_Seq1 - 1]){
-                p3 += 1;}*/
+               else if(res[p3] * 3 == res[i_Seq1]){
+                p3 += 1;}
 	       i_Seq1++;
                u2 = res[p2] * 2;
                u3 = res[p3] * 3;
@@ -88,6 +88,13 @@ void Shell_Insertion_Sort (long *Array, int Size, double *NComp, double *NMove){
           }
 	
 	i_Seq1--;
+	
+	/*int index;
+	for(index = i_Seq1; index >=0; index--)
+	{
+		printf("%d\n", res[index]);
+	}*/
+	
 	//do shell-insertion sort
 	int gap;
 	int j;
@@ -135,6 +142,11 @@ void Improved_Bubble_Sort (long *Array, int Size, double *NComp, double *NMove){
 		i_Seq2++;
 		Seq2[i_Seq2] = n;
 	}
+	/*int index;
+	for(index = i_Seq2; index >= 0; index--)
+	{
+		printf("%d\n", Seq2[index]);
+	}*/
 	//using bubble sort with gaps to sort the array
 	//comb
 	int i = 0; // gap index in Seq2
@@ -142,7 +154,6 @@ void Improved_Bubble_Sort (long *Array, int Size, double *NComp, double *NMove){
 	int j = 0;  // index for subarray selected
 	for(i = 0; i <= i_Seq2; i++){
 		gap = Seq2[i]; 
-		(*NComp)++;    
 		
 		for(j = 0; j < Size - gap; j++){
 			if(Array[j] > Array[j + gap]){
@@ -152,6 +163,7 @@ void Improved_Bubble_Sort (long *Array, int Size, double *NComp, double *NMove){
 			}
 			}
 		}
+	
 	
 	free(Seq2);
 }
