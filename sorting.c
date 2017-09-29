@@ -142,27 +142,45 @@ void Improved_Bubble_Sort (long *Array, int Size, double *NComp, double *NMove){
 		i_Seq2++;
 		Seq2[i_Seq2] = n;
 	}
-	/*int index;
+	int index;
 	for(index = i_Seq2; index >= 0; index--)
 	{
 		printf("%d\n", Seq2[index]);
-	}*/
+	}
+	printf("seq size: %d\n", i_Seq2);
 	//using bubble sort with gaps to sort the array
 	//comb
 	int i = 0; // gap index in Seq2
 	int gap;  
 	int j = 0;  // index for subarray selected
 	for(i = 0; i <= i_Seq2; i++){
-		gap = Seq2[i]; 
+		gap = Seq2[i];
 		
 		for(j = 0; j < Size - gap; j++){
 			if(Array[j] > Array[j + gap]){
 				(*NComp)++;
 				swap(&Array[j],&Array[j + gap]);
+		
 				(*NMove) += 3;
 			}
+			
 			}
+
 		}
+        int x;
+	int y;
+	//int z = 0;
+	for(x = 0 ; x < Size - 1 ; x++){
+	  for(y = 0; y < Size - x - 1 ; y++){
+		if(Array[y] > Array[y + 1]){
+		swap(&Array[y],&Array[y + 1]);
+		//z = 0;
+		} 
+		//else{
+		//z = Size - 1 - y;}
+	  }	
+	}
+
 	
 	
 	free(Seq2);
